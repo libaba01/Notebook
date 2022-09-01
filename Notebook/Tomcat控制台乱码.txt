@@ -1,0 +1,1 @@
+setting -- 	Editor---General---console ----UTF-8

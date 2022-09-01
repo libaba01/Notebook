@@ -1,0 +1,60 @@
+JQuery：是JavaScript的一个框架（半成品的软件），简化js的开发
+  1.基本概念：jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（框架）于2006年1月由John Resig发布。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。
+   JavaScript框架：说白了就是一些js文件，封装了一些方法，可以在其他文件中调用
+  2.快速入门：
+       步骤：下载JQuery，导入Jquery的js文件
+        目前jQuery有三个大版本：
+	1.x：兼容ie678,使用最为广泛的，官方只做BUG维护，
+		 功能不再新增。因此一般项目来说，使用1.x版本就可以了，
+		 最终版本：1.12.4 (2016年5月20日)
+	2.x：不兼容ie678，很少有人使用，官方只做BUG维护，
+		 功能不再新增。如果不考虑兼容低版本的浏览器可以使用2.x，
+		 最终版本：2.2.4 (2016年5月20日)
+	3.x：不兼容ie678，只支持最新的浏览器。除非特殊要求，
+		 一般不会使用3.x版本的，很多老的jQuery插件不支持这个版本。
+		 目前该版本是官方主要更新维护的版本。最新版本：3.2.1（2017年3月20日）
+
+                 jquery-3.3.1.js和jquery-3.3.1.min.js的区别：
+                         jquery-3.3.1.js 版本给程序员读取，有良好的注释和缩进
+                         后者是程序中使用，没有缩进，体积小，程序加载更快
+
+  3.JQuery和js对象的区别和转换
+       JQuery对象更加不便于操纵方法：
+       //JS对象转换为JQuery对象  $(JS对象)
+      //JQuery对象转为JS对象，JQ对象[].方法或者JQ对象.get().方法
+
+  4.选择器：筛选具有相似特征的元素（标签）
+
+
+        基本语法学习：
+             事件绑定：比如给一个按钮添加一个点击事件
+             入口函数：将上边的点击事件写在按钮的前边时，应该使用入口函数$(function(){}),或者使用window.onload=function(){};//后者只能使用一次，否则被后一次覆盖
+             样式控制：修改输出的样式，如背景色……
+
+
+  选择器分类：
+      1）基本选择器：
+          标签选择器：
+          id选择器：
+          类选择器：
+          并集选择器：
+      $(function(){
+			$('#b1').click(function(){
+				$('#one').css("backgroundColor","red");
+			});
+
+			$("#b2").click(function(){
+				$("div").css("backgroundColor","red");
+			});
+
+			$("#b3").click(function(){
+				$(".mini").css("backgroundColor","red"); //.mini是类名
+			});
+
+			$("#b4").click(function(){
+				$("span,#two").css("backgroundColor","red");
+			});
+		});
+
+
+     2）

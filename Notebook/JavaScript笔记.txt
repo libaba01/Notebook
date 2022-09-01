@@ -1,0 +1,152 @@
+JavaScript：客户端脚本语言，运行在客户端浏览器，由浏览器的引擎进行解析
+    功能：增强用户和HTml的页面交互，控制html元素，让页面有一些动态效果，增强用户的体验
+
+    发展史：原来客户端和服务器之间，客户端发送一些不合法的表单数据，服务器需要给出反应，花费许多时间，资源，所以开发客户端脚本语言
+                 直接在客户端进行判断，如果不合法直接和用户交互，减少了与服务器端的交互
+     JavaScript=ECMAScript（客户端脚本语言标准）+BOMZ+DOM
+
+    过程：
+      1.ECMAScript（客户端脚本语言标准）
+           1）与HTML结合：内部js，外部js，无论JavaScript语句放在前边还是后边都先执行，js语句可以定义在body或者head任意位置
+           注释
+          window.alert("hahah");//写入警告框
+         document.write("hello");//写入html页面
+          console.log("test");//写入浏览器控制台
+
+          2） 数据类型：原始数据类型：基本数据类型
+                                  number：整数，小数，NAN（not a number）
+                                  string ：字符/字符串，可以单双引号
+                                 boolean：true/false
+                                  null:空
+                                   undefined:未定义，变量没有初值，默认为此类型
+                             引用数据类型：对象
+               var a；
+                alert(typeof a);//结果是undefined类型
+          3） 变量：一小块存储数据的内存空间
+                    JavaScript弱类型的语言，数字不能开头，有字母，数字，下划线，美元符号
+                     变量可以重复定义，但后者会替换前者
+                     ECMAScript6新增的两个功能：
+                            1.let关键字来定义变量，只能定义局部变量，且只在let所在的代码块内有效，不能重复定义
+                            2.const关键字，声明一个只读的常量
+           4）运算符
+               ==和===的区别
+                     前者判断类型如果不同，先转换类型在比较；后者判断类型如果不同，直接返回false
+
+               类型转换，将string类型转换为number类型，字面值不是数字，转为NAN
+               两种转换写法：
+                    1.var str=+"20"
+                          alert(str+1)//21
+                     2.var str="20"
+                        alert(parseInt(str)+1);//21
+              其他类型转换，null,undefined转为boolea是false类型；number转为boolean类型，其中0和NAN转为false，其他的转为true；string 转boolean，空为false
+
+             5）流程控制语句：if，switch，for，while，dowhile
+
+
+              6）函数定义：
+                      <!-- 方式一 -->
+                          function array(a,b){
+                                return a+b;
+                          }
+                      <!-- 方式二 -->
+                         var array=function(a,b){
+                               return a+b;
+                         }
+              7） JavaScript常用对象：
+                       
+                   基本对象：
+                       Array对象，用来定义数组：两种方式
+                             var array=new Array(1,2,3,4);
+                             var array1=[1,2,3];
+                          由于js语言的弱类型，可以存储任意类型，如果定义了一个数组，没有赋值，默认为undefined类型
+                                 Array对象的一些属性：
+                                       constructor ,length,prototype等等
+                                Array对象的一些方法：
+                                       push,splice等等，push向数组中添加元素，splice（0,1）在数组的索引0出开始删除元素，删除一个元素
+                       String对象，两种创建方式
+                                var first=new String(s);
+                                var first="arr5"//引号内是一个数组
+                            String对象的属性：length，用于动态获取字符串的长度；charAt ，返回在指定位置的字符；indexOf，检索字符串
+                                                            trim,能去掉字符串两端的空格(alert(1+str.trim()+2);)
+                         自定义对象：
+
+                             var arr1={
+                                 name:"zhangsan",
+                                 age:19,
+                                 eat:function(){
+                                     alert("一盆");
+                                 }
+                           }
+
+                            alert(arr1.name);
+                            arr1.eat();   
+
+                                
+                    BOM对象：（浏览器对象模型）js将浏览器的各个组成部分封装为对象
+                              包含以下对象：Navigator 浏览器对象，Screen 屏幕对象 ，Window 浏览器窗口对象  ，History 历史记录对象，Location 地址栏对象
+
+                                前两个基本不会使用，后三个如下：
+                              1）Window对象：对浏览器的窗口进行封装的对象，不需要创建，直接使用。
+                                    window.alert("abc") --显式调用
+                                对象属性：
+                                对象方法：confirm   设置弹出一个框，选择确定还是取消操作；setTimeout定时器操作
+                                          var flag=confirm("确认删除?")；
+                                          alert(flag);//确定后是true
+
+                                        setTimeout(function(){
+                                           alert("haha");
+                                        },3000); //设置3秒之后执行function函数内的步骤
+                                 2）History对象
+                                   对象的获取：window.history(),可以省略window
+                                    对象的函数：back,加载history列表中的前一个URL；forward ，加载history列表中的下一个URL
+                                 3）Location对象
+                                     获取：window.location();     方法：href 。设置或返回完整的URL
+                                    location.href="https://www.baidu.com";//跳转到百度
+
+                    DOM对象：（文档对象模型），js将HTML文档的各个组成部分封装为对象
+                             Document :整个文档对象  即这个HTML文档   ，Element ：元素对象  即对应标签，Attribute：属性对象 即添加的各种属性，Text ：文本对象  ，                              Comment ：注释对象
+                            上边的各个对象对应HTML文档来看
+                             通过DOM，js能干些啥：
+                                       改变HTML元素的内容，改变HTML元素的样式，对HTML DOM时间做出反应，添加和删除HTML元素
+                             
+
+                               Element对象：获取方式----var a=Document.getElementId("");
+                                 具体方法参考DOM手册
+
+                           var divs=document.getElementsByTagName("div");//返回一个数组，数组中存放的是div元素的对象
+                           var divs=document.getElementsByName("div");//返回一个数组，数组中存放的是name=div的元素对象
+                           var divs=document.getElementsByClassName("div");//返回一个数组，数组中存放的是class=div的元素对象
+
+                          事件监听：
+                                    比如点击按钮之后，触发的事件
+                          事件绑定：两种方式
+           //方式一
+  //  <input type="button" onClick='on()' id=“btn”>
+  //   function on(){
+  //    alert("hahah");
+  //  }
+       //方式二
+  //    document.getElementById("btn").onclick()=function (){
+  //      alert("hahh");
+  //    }
+
+
+常见的事件：
+     onclick,鼠标单击事件；；onfocus  ，元素获得焦点；；onmouseover  ，鼠标被移到某元素之上；；onmouseout ，鼠标从某元素移开   ，，等等
+
+
+RegExp对象：正则对象，用来判断字符串是否符合规则
+  两种创建方式：
+         1.var reg=/正则表达式/；
+          2.var reg=newRegExp("正则表达式");
+    正则表达式：
+       常用规则： ^  开始   ；$  结束  ；[]   某个范围内的单个字符 ；.  代表任意单个字符  ；\w  代表单词字符：字母数字下划线   ；\d 代表数字字符
+       量词：+  至少一个  ；* 零个或多个 ；？零个或一个；{x} x个  ；{m,}  至少m个   ；{m,n}  至少m个，至多n个 
+
+  var str="abccccc";
+  var reg=/^\w{6,12}$/
+  var fag=reg.test(str);
+  alert(fag);   //判断输入的字符是否满足单词字符6-12未，满足则为true
+
+
+

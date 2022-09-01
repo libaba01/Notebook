@@ -1,0 +1,13 @@
+E：\mysql\bin\   +cmd（完整路径：C:\Windows\System32\cmd.exe）
+shift+鼠标左键
+mysql -u root -p  （完整命令：mysql -h localhost -P3306 -u root -p）
+Enter ：libaba
+
+查找机器端口占用情况： 键入 netstat -ano
+
+解决问题：Can't connect to MySQL server on 'localhost:3306' (10061)
+  打开任务管理器，->服务->打开服务->mysql启动
+
+
+
+方法重载的要求是两同一不同：同一个类中方法名相同，参数列表不同。至于方法的其他部分，如方法返回值类型、修饰符等，与方法重载没有任何关系。

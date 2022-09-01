@@ -1,0 +1,52 @@
+MVC 开发模式：
+  model ，模型，业务逻辑处理，javabean
+  view ，视图，展示结果，JSP
+  controller ，控制器 ，获取客户端的输入，调用模型，将数据交给视图展示，servlet
+
+MVC的优缺点：
+优点：
+
+ 耦合性低，方便维护，利于分工协作
+ 重用性高
+缺点：
+ 增加了实现的复杂程度
+
+JSTL标签：
+1.概念：javaserver pages tag library，jsp标准标签库
+2作用：简化或者替换jsp页面上的JAVA代码（让前端工程师看不懂JAVA的，能够去维护）
+ 3.使用步骤：
+  导入jstl相关jar包
+  引入标签库：taglib指令：<%@ taglib %>
+ <%@ taglib prefix="c" uri="http://java.……">
+  使用标签
+4.常用的jstl标签：
+
+if：相当于JAVA的if
+  <c:if  test="true">   //判断test的内容是否为true，一般搭配EL正则表达式使用，可以写多个分支
+    
+ </c:if>
+
+
+choose：相当于JAVA的switch
+  when相当于case
+  otherwise相当于default
+<c:choose>
+  <c:when test="${number==1}">星期一</c:when>
+  <c:otherwise>haha</c:otherwise>
+</c:choose>
+foreach：相当于JAVA的for循环
+循环
+begin ,end
+var临时变量
+step 步长
+varStatus 循环状态对象  index :容器中元素的索引，从0开始；count :循环次数，从1开始
+
+遍历容器
+items 容器对象
+var 容器中元素的临时变量
+
+<c:foreach begin="1" end="10" var=“i”step=“1”>
+%{i}
+</c:foreach>
+
+

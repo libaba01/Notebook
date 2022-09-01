@@ -1,0 +1,99 @@
+笔记;
+
+1.Tomcat的配置：
+  ctrl + c  正常关闭Tomcat
+  将端口号改为80，直接在浏览器上输入localhost ，就可以访问Tomcat
+  将web项目复制到webapp目录下就可以在浏览器访问，Tomcat支持自动将.war压缩包解压，.zip不行
+
+idea中创建Maven Web项目的两种方式：使用骨架，
+不使用骨架：创建好模块后，修改配置文件，添加打包方式<packaging>war</packaging>，添加核心web目录（添加模块哪里，
+点facets，添加目录和web.xml文件）
+
+idea中使用Tomcat两种方式：1）将本地Tomact集成到idea中，然后进行项目部署即可
+                                                    点锤子旁边的按钮->添加Tomcat-local->configure->选Tomcat的安装文件夹
+                                              2）使用Tomcat Maven 插件配置
+<!--Tomcat插件配置安装-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+
+2.Servlet:
+  首先建立一个web项目，然后配置web.XML文件：
+<!--导入servlet包-->
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+<!--必须加scope标签，负责，会和tomcat内置的发生冲突-->
+        </dependency>
+    </dependencies>
+
+  然后再建一个实体类来实现Servlet接口；在将servlet类映射到url上/使用注解方式（Servlet3.0版本之后才支持注解）
+
+路径匹配规则：优先匹配最相似的方式
+
+
+
+要从一个servlet“跳转”到另一个servlet的方法：
+1)使用request.getRequestDispatcher("/你要跳转的servlt").forward(request,response);  //表示从前一个servlet转发另一个servlet 或者一个页面，不经过客户端，在服务器内部进行的操作
+2）response.sendRedirect("/Servlet名"); //servlet1将客户端发来的请求重定向到servlet2，让浏览器重新访问servlet2
+
+
+session技术的实现：
+客户端禁止 cookie，session 还能用吗？
+可以通过其他方法在禁用 cookie 的情况下，可以继续使用session。
+
+  通过url重写，把 sessionid 作为参数追加的原 url 中，后续的浏览器与服务器交互中携带 sessionid 参数。
+  服务器的返回数据中包含 sessionid，浏览器发送请求时，携带 sessionid 参数。
+  通过 Http 协议其他 header 字段，服务器每次返回时设置该 header 字段信息，浏览器中 js 读取该 header 字段，请求服务器时，js设置携带该 header 字段。
+
+
+
+
+JDBC的补充知识：
+
+java应用程序——>JDBC API——>JDBC DriverManger——>JDBC Driver
+
+JDBC API提供的接口和类:
+
+DriverManger控制Drive，其有两个方法很重要：
+   1.getConnection​(String url, String user, String password)  //尝试建立与给定数据库URL的连接。 
+   2.registerDriver​(Driver driver)                         //使用 DriverManager  注册给定的驱动程序。  
+
+Drive
+
+Connection  ：获取执行对象，将执行sql语句的对象（Statement,PreparedStatement,等）传给Connection对象；除此之外，Connection接口中定义了三个方法来管理事务
+
+Statement：执行sql语句，它定义了许多方法，分别用来执行不同的sql语句，实际上是将sql语句发送到数据库执行的
+
+Resultset：封装了	Statement对象执行DQL查询语句的结果，有两个方法，可以将封装的结果展示出来
+
+
+
+
+
+
+
+
+
+
+
+
+
+
